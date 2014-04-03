@@ -50,7 +50,7 @@ static const uint8_t DEBUG_UARTTXD = 7;  /* Transmit Data (TXD) at P1.6 */
 
 #if defined(__MSP430_HAS_USCI_B0__)
 
-static const uint8_t SS      = 8 ;  /* P1.7 */
+static const uint8_t SS      = 8 ; /* P1.7 */
 static const uint8_t SCK     = 5;  /* P1.4 */
 static const uint8_t MOSI    = 4;  /* P1.3 */
 static const uint8_t MISO    = 3;  /* P1.2 */
@@ -131,43 +131,6 @@ static const uint8_t P5_6 = 39;
 static const uint8_t P5_7 = 40;
 #endif
 
-
-/* contants for LCD_B */
-
-/*#if defined(__MSP430_HAS_LCD_B__)
-static const uint8_t COM0 = 40;
-static const uint8_t COM1 = 39;
-static const uint8_t COM2 = 38;
-static const uint8_t COM3 = 37;
-
-static const uint8_t S0 = 34;
-static const uint8_t S1 = 35;
-static const uint8_t S2 = 24;
-static const uint8_t S3 = 25;
-static const uint8_t S4 = 26;
-static const uint8_t S5 = 27;
-static const uint8_t S6 = 28;
-static const uint8_t S7 = 29;
-static const uint8_t S8 = 30;
-static const uint8_t S9 = 31;
-static const uint8_t S10 = 16;
-static const uint8_t S11 = 17;
-static const uint8_t S12 = 18;
-static const uint8_t S13 = 19;
-static const uint8_t S14 = 20;
-static const uint8_t S15 = 21;
-static const uint8_t S16 = 22;
-static const uint8_t S17 = 23;
-static const uint8_t S18 = 0;
-static const uint8_t S19 = 1;
-static const uint8_t S20 = 2;
-static const uint8_t S21 = 3;
-static const uint8_t S22 = 4;
-static const uint8_t S23 = 36;
-static const uint8_t S24 = 37;
-static const uint8_t S25 = 38;
-static const uint8_t S26 = 39;
-#endif*/
 
 #ifdef ARDUINO_MAIN
 
@@ -300,31 +263,51 @@ const uint16_t port_to_pmap[] = {
 	NOT_A_PORT,
 	NOT_A_PORT,
 	NOT_A_PORT,
-	NOT_A_PORT,
+	NOT_A_PORT
 };
 
 const uint8_t digital_pin_to_timer[] = {
-	NOT_ON_TIMER, /*  dummy */
-	NOT_ON_TIMER, /*  1  */
-	NOT_ON_TIMER, /*  2 */
-	NOT_ON_TIMER, /*  3 - P1.1, note: A0 output cannot be used with analogWrite */
-	NOT_ON_TIMER, /*  4 - P1.2 */
-	NOT_ON_TIMER, /*  5 - P1.3 */
-	NOT_ON_TIMER, /*  6 - P1.4 note: special case. Leaving as no timer due to difficulty determining if available */
-	NOT_ON_TIMER, /*  7 - P1.5 note: A0 output cannot be used with analogWrite  */
-	NOT_ON_TIMER, /*  8 - P2.0 */
-	NOT_ON_TIMER, /*  9 - P2.1 */
-	NOT_ON_TIMER, /* 10 - P2.3 */
-	NOT_ON_TIMER, /* 11 - P2.4 */
-	NOT_ON_TIMER, /* 12 - P2.5 */
-	NOT_ON_TIMER, /* 13 - P2.6 */
-	NOT_ON_TIMER, /* 14 - P1.6 */
-	NOT_ON_TIMER, /* 15 - P1.7 */
-	NOT_ON_TIMER, /* 16 - /RESET */  
-	NOT_ON_TIMER, /* 17 - TEST */  
-	NOT_ON_TIMER, /* 18 - XOUT - P2.7 */
-	NOT_ON_TIMER, /* 19 - XIN - P2.6: */
-	NOT_ON_TIMER, /* 20 - GND */
+	NOT_ON_TIMER,        /*  dummy */
+	NOT_ON_TIMER,        /*  1 */
+	NOT_ON_TIMER,        /*  2 */
+	NOT_ON_TIMER,        /*  3 */
+	NOT_ON_TIMER,        /*  4 */
+	NOT_ON_TIMER,        /*  5 */
+	NOT_ON_TIMER,        /*  6 */
+	NOT_ON_TIMER,        /*  7 */
+	NOT_ON_TIMER,        /*  8 */
+	NOT_ON_TIMER,        /*  9 */
+	T1A0,                /* 10 */
+	T1A1,                /* 11 */
+	T1A2,                /* 12 */
+	NOT_ON_TIMER,        /* 13 */
+	NOT_ON_TIMER,        /* 14 */
+	NOT_ON_TIMER,        /* 15 */
+	NOT_ON_TIMER,        /* 16 */  
+	NOT_ON_TIMER,        /* 17 */  
+	T0A0,                /* 18 */
+	T0A1,                /* 19 */
+	T0A2,                /* 20 */
+	T0A3,                /* 21 */
+	T0A4,                /* 22 */
+	NOT_ON_TIMER,        /* 23 */
+	NOT_ON_TIMER,        /* 24 */
+	NOT_ON_TIMER,        /* 25 */
+	NOT_ON_TIMER,        /* 26 */
+	NOT_ON_TIMER,        /* 27 */
+	NOT_ON_TIMER,        /* 28 */
+	NOT_ON_TIMER,        /* 29 */
+	NOT_ON_TIMER,        /* 30 */
+	NOT_ON_TIMER,        /* 31 */
+	NOT_ON_TIMER,        /* 32 */
+	NOT_ON_TIMER,        /* 33 */
+	NOT_ON_TIMER,        /* 34 */
+	NOT_ON_TIMER,        /* 35 */
+	NOT_ON_TIMER,        /* 36 */
+	NOT_ON_TIMER,        /* 37 */
+	NOT_ON_TIMER,        /* 38 */
+	NOT_ON_TIMER,        /* 39 */
+	NOT_ON_TIMER         /* 40 */
 };
 
 const uint8_t digital_pin_to_port[] = {
@@ -412,7 +395,7 @@ const uint8_t digital_pin_to_bit_mask[] = {
 	BV(4),     /* 37 */
 	BV(5),     /* 38 */
 	BV(6),     /* 39 */
-	BV(7),     /* 40 */
+	BV(7)     /* 40 */
 	
 };
 
@@ -457,7 +440,7 @@ const uint32_t digital_pin_to_analog_in[] = {
 	NOT_ON_ADC,     /*  37  */
 	NOT_ON_ADC,     /*  38  */
 	NOT_ON_ADC,     /*  39  */
-	NOT_ON_ADC,     /*  40  */
+	NOT_ON_ADC     /*  40  */
 	
 };
 #endif // #ifdef ARDUINO_MAIN

@@ -5,8 +5,7 @@
   *	Energia core files for MSP430/CC430
   *		Copyright (c) 2012 Robert Wessels. All right reserved.
   *
-  *     Contribution: Yann LEFEBVRE
-  *
+  *     Contribution: B@tto
   ***********************************************************************
   Derived from:
   pins_arduino.h - Pin definition functions for Arduino

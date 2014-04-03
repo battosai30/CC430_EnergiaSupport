@@ -166,7 +166,8 @@ void initClocks(void)
 #endif // __MSP430_HAS_CS__
 
 #if defined(__MSP430_HAS_UCS__) || defined(__MSP430_HAS_UCS_RF__)
-     PMMCTL0_H = PMMPW_H;             // open PMM
+         
+         PMMCTL0_H = PMMPW_H;             // open PMM
 	 SVSMLCTL &= ~SVSMLRRL_7;         // reset
 	 PMMCTL0_L = PMMCOREV_0;          //
 	 
@@ -233,84 +234,35 @@ void initClocks(void)
 #else
         #warning No Suitable Frequency found!
 #endif
+
+if defined(P5SE)
+// Enable 32kHz ACLK
+P5SEL |= 0x03;              // Select XIN, XOUT on P5.0 and P5.1
+    UCSCTL6 &= ~XT1OFF;         // XT1 On, Highest drive strength
+    UCSCTL6 |= XCAP_3;          // Internal load cap
+
+    UCSCTL3 = SELA__XT1CLK;     // Select XT1 as FLL reference
+    UCSCTL4 = SELA__XT1CLK | SELS__DCOCLKDIV | SELM__DCOCLKDIV;
+#endif
+
 #endif // __MSP430_HAS_UCS__
 
 #if defined(LOCKLPM5)
      // This part is required for FR59xx device to unlock the IOs
      PMMCTL0_H = PMMPW_H;           // open PMM
-	 PM5CTL0 &= ~LOCKLPM5;          // clear lock bit for ports
+     PM5CTL0 &= ~LOCKLPM5;          // clear lock bit for ports
      PMMCTL0_H = 0;                 // lock PMM
 #endif
+
 /*
-#if defined(__MSP430_HAS_UCS_RF__)
 
-     PMMCTL0_H = PMMPW_H;             // open PMM
-	 SVSMLCTL &= ~SVSMLRRL_7;         // reset
-	 PMMCTL0_L = PMMCOREV_0;          //
-	 
-	 PMMIFG &= ~(SVSMLDLYIFG|SVMLVLRIFG|SVMLIFG);  // clear flags
-	 SVSMLCTL = (SVSMLCTL & ~SVSMLRRL_7) | SVSMLRRL_1;
-	 while ((PMMIFG & SVSMLDLYIFG) == 0); // wait till settled
-	 while ((PMMIFG & SVMLIFG) == 0); // wait for flag
-	 PMMCTL0_L = (PMMCTL0_L & ~PMMCOREV_3) | PMMCOREV_1; // set VCore for lext Speed
-	 while ((PMMIFG & SVMLVLRIFG) == 0);  // wait till level reached
-
-	 PMMIFG &= ~(SVSMLDLYIFG|SVMLVLRIFG|SVMLIFG);  // clear flags
-	 SVSMLCTL = (SVSMLCTL & ~SVSMLRRL_7) | SVSMLRRL_2;
-	 while ((PMMIFG & SVSMLDLYIFG) == 0); // wait till settled
-	 while ((PMMIFG & SVMLIFG) == 0); // wait for flag
-	 PMMCTL0_L = (PMMCTL0_L & ~PMMCOREV_3) | PMMCOREV_2; // set VCore for lext Speed
-	 while ((PMMIFG & SVMLVLRIFG) == 0);  // wait till level reached
-
-	 PMMIFG &= ~(SVSMLDLYIFG|SVMLVLRIFG|SVMLIFG);  // clear flags
-	 SVSMLCTL = (SVSMLCTL & ~SVSMLRRL_7) | SVSMLRRL_3;
-	 while ((PMMIFG & SVSMLDLYIFG) == 0); // wait till settled
-	 while ((PMMIFG & SVMLIFG) == 0); // wait for flag
-	 PMMCTL0_L = (PMMCTL0_L & ~PMMCOREV_3) | PMMCOREV_3; // set VCore for lext Speed
-	 while ((PMMIFG & SVMLVLRIFG) == 0);  // wait till level reached
-	 
-     PMMCTL0_H = 0;                   // lock PMM
 	 
  // Set global high power request enable
     PMMCTL0_H = 0xA5;
     PMMCTL0_L |= PMMHPMRE;
     PMMCTL0_H = 0x00;
 
-    // ---------------------------------------------------------------------
-    // Enable 32kHz ACLK
-    P5SEL |= 0x03;              // Select XIN, XOUT on P5.0 and P5.1
-    UCSCTL6 &= ~XT1OFF;         // XT1 On, Highest drive strength
-    UCSCTL6 |= XCAP_3;          // Internal load cap
-
-    UCSCTL3 = SELA__XT1CLK;     // Select XT1 as FLL reference
-    UCSCTL4 = SELA__XT1CLK | SELS__DCOCLKDIV | SELM__DCOCLKDIV;
-
-    // ---------------------------------------------------------------------
-    // Configure CPU clock for 12MHz
-    _BIS_SR(SCG0);              // Disable the FLL control loop
-    UCSCTL0 = 0x0000;           // Set lowest possible DCOx, MODx
-    UCSCTL1 = DCORSEL_5;        // Select suitable range
-    UCSCTL2 = FLLD_1 + 0x16E;   // Set DCO Multiplier
-    _BIC_SR(SCG0);              // Enable the FLL control loop
-
-    // Worst-case settling time for the DCO when the DCO range bits have been
-    // changed is n x 32 x 32 x f_MCLK / f_FLL_reference. See UCS chapter in 5xx
-    // UG for optimization.
-    // 32 x 32 x 12 MHz / 32,768 Hz = 375000 = MCLK cycles for DCO to settle
-    __delay_cycles(375000);
-
-    // Loop until XT1 & DCO stabilizes, use do-while to insure that
-    // body is executed at least once
-    do
-    {
-        UCSCTL7 &= ~(XT2OFFG + XT1LFOFFG + XT1HFOFFG + DCOFFG);
-        SFRIFG1 &= ~OFIFG;      // Clear fault flags
-    }
-    while ((SFRIFG1 & OFIFG));
-
-
-	
-#endif*/
+*/
 
 }
 volatile uint32_t wdtCounter = 0;

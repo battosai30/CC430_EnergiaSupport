@@ -97,6 +97,7 @@ static const uint8_t P2_5 = 13;
 static const uint8_t P2_6 = 14;
 static const uint8_t P2_7 = 15;
 
+#ifdef __MSP430_HAS_PORT3_R__
 static const uint8_t P3_0 = 16;
 static const uint8_t P3_1 = 17;
 static const uint8_t P3_2 = 18;
@@ -105,7 +106,9 @@ static const uint8_t P3_4 = 20;
 static const uint8_t P3_5 = 21;
 static const uint8_t P3_6 = 22;
 static const uint8_t P3_7 = 23;
+#endif
 
+#ifdef __MSP430_HAS_PORT4_R__
 static const uint8_t P4_0 = 24;
 static const uint8_t P4_1 = 25;
 static const uint8_t P4_2 = 26;
@@ -114,7 +117,9 @@ static const uint8_t P4_4 = 28;
 static const uint8_t P4_5 = 29;
 static const uint8_t P4_6 = 30;
 static const uint8_t P4_7 = 31;
+#endif
 
+#ifdef __MSP430_HAS_PORT5_R__
 static const uint8_t P5_0 = 32;
 static const uint8_t P5_1 = 33;
 static const uint8_t P5_2 = 34;
@@ -123,12 +128,12 @@ static const uint8_t P5_4 = 36;
 static const uint8_t P5_5 = 37;
 static const uint8_t P5_6 = 38;
 static const uint8_t P5_7 = 39;
+#endif
 
 
 /* contants for LCD_B */
-#if defined(__MSP430_HAS_LCD_B__)
 
-
+/*#if defined(__MSP430_HAS_LCD_B__)
 static const uint8_t COM0 = 40;
 static const uint8_t COM1 = 39;
 static const uint8_t COM2 = 38;
@@ -161,7 +166,7 @@ static const uint8_t S23 = 36;
 static const uint8_t S24 = 37;
 static const uint8_t S25 = 38;
 static const uint8_t S26 = 39;
-#endif
+#endif*/
 
 #ifdef ARDUINO_MAIN
 

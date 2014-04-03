@@ -5,7 +5,8 @@
   *	Energia core files for MSP430/CC430
   *		Copyright (c) 2012 Robert Wessels. All right reserved.
   *
-  *     Contribution: B@tto
+  *     Contribution: Yann LEFEBVRE
+  *
   ***********************************************************************
   Derived from:
   pins_arduino.h - Pin definition functions for Arduino
@@ -66,16 +67,17 @@ static const uint8_t TWISCL  = 3;  /* P1.2 */
 #endif
 
 /* analog contants */
-static const uint8_t A0  = 0;
-static const uint8_t A1  = 1;
-static const uint8_t A2  = 2;
-static const uint8_t A3  = 3;
-static const uint8_t A4  = 4;
-static const uint8_t A5  = 5;
-static const uint8_t A6  = 6;
-static const uint8_t A7  = 7;
+static const uint8_t A0  = 9;
+static const uint8_t A1  = 10;
+static const uint8_t A2  = 11;
+static const uint8_t A3  = 12;
+static const uint8_t A4  = 13;
+static const uint8_t A5  = 14;
+static const uint8_t A6  = 15;
+static const uint8_t A7  = 16;
 
-static const uint8_t TEMPSENSOR = 10 ;
+static const uint8_t  A10 = 128 + 10 ; // TEMPSENSOR
+static const uint8_t  A11 = 128 + 11; // AVCC/2
 
 /* digital contants */
 static const uint8_t P1_0 = 1;

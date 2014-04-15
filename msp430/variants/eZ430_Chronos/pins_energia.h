@@ -131,6 +131,13 @@ static const uint8_t P5_6 = 39;
 static const uint8_t P5_7 = 40;
 #endif
 
+#ifdef __MSP430_HAS_PORTJ_R__
+static const uint8_t PJ_0 = 41;
+static const uint8_t PJ_1 = 42;
+static const uint8_t PJ_2 = 43;
+static const uint8_t PJ_3 = 44;
+#endif
+
 
 #ifdef ARDUINO_MAIN
 
@@ -156,6 +163,9 @@ const uint16_t port_to_input[] = {
 #ifdef __MSP430_HAS_PORT8_R__
 	(uint16_t) &P8IN,
 #endif
+#ifdef __MSP430_HAS_PORTJ_R__
+	(uint16_t) &PJIN,
+#endif
 };
 
 const uint16_t port_to_output[] = {
@@ -179,6 +189,9 @@ const uint16_t port_to_output[] = {
 #endif
 #ifdef __MSP430_HAS_PORT8_R__
 	(uint16_t) &P8OUT,
+#endif
+#ifdef __MSP430_HAS_PORTJ_R__
+	(uint16_t) &PJOUT,
 #endif
 };
 
@@ -204,6 +217,9 @@ const uint16_t port_to_dir[] = {
 #ifdef __MSP430_HAS_PORT8_R__
 	(uint16_t) &P8DIR,
 #endif
+#ifdef __MSP430_HAS_PORTJ_R__
+	(uint16_t) &PJDIR,
+#endif
 };
 
 const uint16_t port_to_ren[] = {
@@ -227,6 +243,9 @@ const uint16_t port_to_ren[] = {
 #endif
 #ifdef __MSP430_HAS_PORT8_R__
 	(uint16_t) &P8REN,
+#endif
+#ifdef __MSP430_HAS_PORTJ_R__
+	(uint16_t) &PJREN,
 #endif
 };
 
@@ -252,6 +271,9 @@ const uint16_t port_to_sel0[] = {  /* put this PxSEL register under the group of
 #ifdef __MSP430_HAS_PORT8_R__
 	(uint16_t) &P8SEL,
 #endif
+#ifdef __MSP430_HAS_PORTJ_R__
+	(uint16_t) &PJSEL,
+#endif
 };
 
 const uint16_t port_to_pmap[] = {
@@ -259,6 +281,7 @@ const uint16_t port_to_pmap[] = {
 	(uint16_t) &P1MAP0,
 	(uint16_t) &P2MAP0,
 	(uint16_t) &P3MAP0,
+	NOT_A_PORT,
 	NOT_A_PORT,
 	NOT_A_PORT,
 	NOT_A_PORT,
@@ -308,6 +331,10 @@ const uint8_t digital_pin_to_timer[] = {
 	NOT_ON_TIMER,        /* 38 */
 	NOT_ON_TIMER,        /* 39 */
 	NOT_ON_TIMER         /* 40 */
+	NOT_ON_TIMER,        /* 41 */
+	NOT_ON_TIMER,        /* 42 */
+	NOT_ON_TIMER,        /* 43 */
+	NOT_ON_TIMER         /* 44 */
 };
 
 const uint8_t digital_pin_to_port[] = {
@@ -351,7 +378,11 @@ const uint8_t digital_pin_to_port[] = {
 	P5,        /* 37 */
 	P5,        /* 38 */
 	P5,        /* 39 */
-	P5         /* 40 */
+	P5,        /* 41 */
+	PJ,        /* 42 */
+	PJ,        /* 43 */
+	PJ,        /* 44 */
+	PJ         /* 45 */
 };
 
 const uint8_t digital_pin_to_bit_mask[] = {
@@ -395,8 +426,11 @@ const uint8_t digital_pin_to_bit_mask[] = {
 	BV(4),     /* 37 */
 	BV(5),     /* 38 */
 	BV(6),     /* 39 */
-	BV(7)     /* 40 */
-	
+	BV(7),     /* 40 */
+	BV(0),     /* 41 */
+	BV(1),     /* 42 */
+	BV(2),     /* 43 */
+	BV(3)      /* 44 */
 };
 
 const uint32_t digital_pin_to_analog_in[] = {
@@ -440,7 +474,11 @@ const uint32_t digital_pin_to_analog_in[] = {
 	NOT_ON_ADC,     /*  37  */
 	NOT_ON_ADC,     /*  38  */
 	NOT_ON_ADC,     /*  39  */
-	NOT_ON_ADC     /*  40  */
+	NOT_ON_ADC,     /*  40  */
+	NOT_ON_ADC,     /*  41  */
+	NOT_ON_ADC,     /*  42  */
+	NOT_ON_ADC,     /*  43  */
+	NOT_ON_ADC      /*  44  */
 	
 };
 #endif // #ifdef ARDUINO_MAIN

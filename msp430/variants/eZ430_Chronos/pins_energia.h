@@ -5,7 +5,7 @@
   *	Energia core files for MSP430/CC430
   *		Copyright (c) 2012 Robert Wessels. All right reserved.
   *
-  *     Contribution: Yann LEFEBVRE
+  *     Contribution: Yann "B@tto" LEFEBVRE
   *
   ***********************************************************************
   Derived from:

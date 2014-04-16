@@ -77,6 +77,7 @@ static const uint8_t A6  = 15;
 static const uint8_t A7  = 16;
 
 static const uint8_t  A10 = 128 + 10 ; // TEMPSENSOR
+static const uint8_t  TEMPSENSOR = 128 + 10 ; // TEMPSENSOR
 static const uint8_t  A11 = 128 + 11; // AVCC/2
 
 /* digital contants */
@@ -118,7 +119,7 @@ static const uint8_t P4_4 = 29;
 static const uint8_t P4_5 = 30;
 static const uint8_t P4_6 = 31;
 static const uint8_t P4_7 = 32;
-#endiF
+#endif
 
 #ifdef __MSP430_HAS_PORT5_R__
 static const uint8_t P5_0 = 33;

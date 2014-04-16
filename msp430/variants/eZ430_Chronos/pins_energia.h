@@ -272,9 +272,6 @@ const uint16_t port_to_sel0[] = {  /* put this PxSEL register under the group of
 #ifdef __MSP430_HAS_PORT8_R__
 	(uint16_t) &P8SEL,
 #endif
-#ifdef __MSP430_HAS_PORTJ_R__
-	(uint16_t) &PJSEL,
-#endif
 };
 
 const uint16_t port_to_pmap[] = {
@@ -331,7 +328,7 @@ const uint8_t digital_pin_to_timer[] = {
 	NOT_ON_TIMER,        /* 37 */
 	NOT_ON_TIMER,        /* 38 */
 	NOT_ON_TIMER,        /* 39 */
-	NOT_ON_TIMER         /* 40 */
+	NOT_ON_TIMER,        /* 40 */
 	NOT_ON_TIMER,        /* 41 */
 	NOT_ON_TIMER,        /* 42 */
 	NOT_ON_TIMER,        /* 43 */

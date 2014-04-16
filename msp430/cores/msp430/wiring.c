@@ -215,9 +215,10 @@ void initClocks(void)
 	 UCSCTL7 &= ~(0x07);               //Clear Fault flags
 #elif F_CPU >= 12000000L
      UCSCTL1 = DCORSEL_6;             //Range 6
-     UCSCTL2 = 0x116D;                //Loop Control Setting
+	 UCSCTL2 = 0x116D;                //Loop Control Setting
 	 UCSCTL3 = SELREF__REFOCLK;       //REFO for FLL
-	 UCSCTL4 = SELA__REFOCLK|SELM__DCOCLKDIV|SELS__DCOCLKDIV;  //Select clock sources
+	 
+	 
 	 UCSCTL7 &= ~(0x07);               //Clear Fault flags
 #elif F_CPU >= 8000000L
      UCSCTL1 = DCORSEL_5;             //Range 6
@@ -233,16 +234,6 @@ void initClocks(void)
 	 UCSCTL7 &= ~(0x07);               //Clear Fault flags
 #else
         #warning No Suitable Frequency found!
-#endif
-
-if defined(P5SE)
-// Enable 32kHz ACLK
-P5SEL |= 0x03;              // Select XIN, XOUT on P5.0 and P5.1
-    UCSCTL6 &= ~XT1OFF;         // XT1 On, Highest drive strength
-    UCSCTL6 |= XCAP_3;          // Internal load cap
-
-    UCSCTL3 = SELA__XT1CLK;     // Select XT1 as FLL reference
-    UCSCTL4 = SELA__XT1CLK | SELS__DCOCLKDIV | SELM__DCOCLKDIV;
 #endif
 
 #endif // __MSP430_HAS_UCS__

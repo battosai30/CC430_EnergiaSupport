@@ -28,3 +28,5 @@ ez430.build.f_cpu=12000000L
 ez430.build.core=msp430
 ez430.build.variant=eZ430_Chronos
 ez430.upload.maximum_ram_size=4096
+
+Lauch Energia and normally a new board is available board list ;)
